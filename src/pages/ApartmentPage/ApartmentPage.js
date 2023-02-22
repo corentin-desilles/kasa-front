@@ -19,7 +19,6 @@ function ApartmentPage() {
   const BASE_URL_API = useContext(ApiContext);
   const [logements, isLoading] = useFetchData(BASE_URL_API);
   const { apartId } = useParams();
-  // const logementExiste = logements.find(lo => lo._id === apartId._id);
 
   const [selected, setSelected] = useState(null);
 
@@ -45,7 +44,7 @@ function ApartmentPage() {
     });
   }
 
-  let targetedLogement = logements.find(logement => logement._id === apartId);
+  let targetedLogement = logements.find(logement => logement.id === apartId);
 
   return (
     <>
@@ -55,7 +54,7 @@ function ApartmentPage() {
         </div>
       ) : targetedLogement ? (
         <div
-          key={targetedLogement._id}
+          key={targetedLogement.id}
           className={`${style.container}`}
           handleScrollTop={scrollTop()}
         >

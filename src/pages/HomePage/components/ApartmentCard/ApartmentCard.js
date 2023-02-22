@@ -1,9 +1,9 @@
 import style from './ApartmentCard.module.scss';
 import { Link } from 'react-router-dom';
 
-function AppartmentCard({ logement: { _id, title, cover } }) {
+function AppartmentCard({ logement: { id, title, cover } }) {
   return (
-    <Link to={`/apart/${_id}`}>
+    <Link to={`/apart/${id}`}>
       <div className={`${style.apartementCard}`}>
         <div className={`${style.imageContainer}`}>
           <img src={cover} alt="appartement" />
