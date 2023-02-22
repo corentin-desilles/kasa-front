@@ -1,0 +1,82 @@
+@use '../../assets/styles/mixins' as mixin;
+
+@keyframes slideup {
+  from {
+    transform: translatey(20px);
+    opacity: 0%;
+  }
+  to {
+    transform: translatey(0px);
+    opacity: 100%;
+  }
+}
+
+.aboutPageContainer {
+  max-width: 1281px;
+  width: 100%;
+  min-height: 71vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bannerContainer {
+  width: 100%;
+  height: 223px;
+  animation: slideup 1s forwards;
+  opacity: 0;
+  animation-delay: calc(0.1s / 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  @include mixin.xs {
+    height: 223px;
+    width: 336px;
+  }
+  @include mixin.sm {
+    width: 537px;
+    height: 179px;
+  }
+  @include mixin.md {
+    width: 729px;
+    height: 223px;
+  }
+  @include mixin.lg {
+    width: 953px;
+    height: 223px;
+  }
+}
+
+.wrapper {
+  width: 84vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideup 1s forwards;
+  opacity: 0;
+  animation-delay: calc(0.3s / 1);
+  @include mixin.xs {
+    max-width: 335px;
+    width: 100%;
+  }
+  @include mixin.sm {
+    max-width: 450px;
+    width: 100%;
+  }
+  @include mixin.md {
+    max-width: 650px;
+    width: 100%;
+  }
+  @include mixin.lg {
+    max-width: 850px;
+    width: 100%;
+  }
+}
+
+.accordion {
+  width: 1023px;
+  @include mixin.xs {
+  }
+}

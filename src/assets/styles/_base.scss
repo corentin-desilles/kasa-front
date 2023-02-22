@@ -1,0 +1,12 @@
+//elements de base html tous les elems
+
+body {
+  margin: auto;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,41 @@
+@use '../../../../assets/styles/mixins' as mixin;
+
+.apartmentPageTitle {
+  color: var(--primary);
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  /* or 51px */
+
+  display: flex;
+  align-items: flex-end;
+  @include mixin.xs {
+    font-size: 18px;
+    max-width: 335px;
+    width: 100%;
+  }
+}
+
+.apartmentPageLocation {
+  color: var(--primary);
+
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* identical to box height, or 26px */
+  display: flex;
+  align-items: flex-end;
+  @include mixin.xs {
+    font-size: 14px;
+  }
+}
+
+.container {
+  height: 100%;
+  position: relative;
+}

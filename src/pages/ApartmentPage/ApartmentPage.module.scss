@@ -1,0 +1,158 @@
+@use '../../assets/styles/mixins' as mixin;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.carousselContainer {
+  height: 415px;
+  width: 1240px;
+  border-radius: 25px;
+  animation: slideup 1s forwards;
+  opacity: 0;
+  @include mixin.xs {
+    width: 335px;
+    height: 255px;
+  }
+  @include mixin.sm {
+    width: 537px;
+  }
+  @include mixin.md {
+    width: 729px;
+  }
+  @include mixin.lg {
+    width: 953px;
+  }
+}
+
+.bodyContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0px 0px 30px 0px;
+  opacity: 0;
+  animation: slideup 1s forwards;
+  @include mixin.xs {
+    max-width: 335px;
+    width: 100%;
+    flex-direction: column;
+  }
+  @include mixin.sm {
+    width: 537px;
+    flex-direction: column;
+  }
+  @include mixin.md {
+    width: 729px;
+  }
+  @include mixin.lg {
+    width: 953px;
+  }
+}
+
+.hostAndRateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include mixin.xs {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+  @include mixin.sm {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}
+.rateContainer {
+  height: 40px;
+}
+
+.hostContainer {
+  width: 196px;
+  height: 70px;
+}
+
+.titleContainer {
+  @include mixin.md {
+    width: 500px;
+  }
+}
+
+.nameTagContainer {
+  height: 30px;
+  display: flex;
+}
+
+.animate1 {
+  animation-delay: calc(1s / 1.5);
+}
+
+.animate2 {
+  animation-delay: calc(0.6s / 1.5);
+}
+
+.animate3 {
+  animation-delay: calc(0.1s / 1.5);
+}
+.wrapper {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.descriptionContainer {
+  width: 1240px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  animation: slideup 1s forwards;
+  @include mixin.xs {
+    max-width: 335px;
+    width: 100%;
+    flex-direction: column;
+  }
+  @include mixin.sm {
+    width: 537px;
+    flex-direction: column;
+  }
+  @include mixin.md {
+    width: 729px;
+    flex-direction: column;
+  }
+  @include mixin.lg {
+    width: 953px;
+  }
+}
+
+.accordion {
+  opacity: 0;
+  animation: slideup 1s forwards;
+  width: 582px;
+  display: flex;
+  justify-content: space-between;
+  @include mixin.xs {
+    max-width: 335px;
+    width: 100%;
+  }
+  @include mixin.sm {
+    width: 537px;
+  }
+  @include mixin.md {
+    width: 729px;
+  }
+  @include mixin.lg {
+    width: 953px;
+    padding: 0px 20px 0px 20px;
+  }
+}
+
+@keyframes slideup {
+  from {
+    transform: translatey(20px);
+    opacity: 0%;
+  }
+  to {
+    transform: translatey(0px);
+    opacity: 100%;
+  }
+}

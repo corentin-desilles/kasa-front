@@ -1,0 +1,66 @@
+@use '../../../../assets/styles/mixins' as mixin;
+
+.sliderStyle {
+  height: 100%;
+  position: relative;
+}
+
+.slideStyle {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.arrowLeft {
+  position: absolute;
+  top: 50%;
+  transform: rotate(-90deg);
+  left: 32px;
+  font-size: 75px;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+  @include mixin.xs {
+    font-size: 25px;
+  }
+}
+
+.arrowRight {
+  position: absolute;
+  top: 50%;
+  transform: rotate(90deg);
+  right: 32px;
+  font-size: 75px;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+  @include mixin.xs {
+    font-size: 25px;
+  }
+}
+
+.counterPosition {
+  position: absolute;
+  z-index: 1;
+  font-size: 30px;
+  bottom: 0;
+  right: 48%;
+  color: white;
+  @include mixin.xs {
+    display: none;
+  }
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate {
+  animation: fadeInAnimation 1s forwards;
+}

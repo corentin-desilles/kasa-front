@@ -1,0 +1,63 @@
+@use '../../assets/styles/mixins' as mixin;
+
+header {
+  max-width: 1281px;
+  width: 100%;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0px 63px 0px;
+  ul {
+    display: flex;
+  }
+  img {
+    cursor: pointer;
+  }
+  @include mixin.xs {
+    width: 335px;
+    height: 47px;
+    padding: 15px 0px 20px 0px;
+    img {
+      height: 47px;
+      width: 145px;
+    }
+  }
+  @include mixin.sm {
+    width: 537px;
+  }
+  @include mixin.md {
+    width: 729px;
+  }
+  @include mixin.lg {
+    width: 953px;
+  }
+}
+
+.link {
+  cursor: pointer;
+  width: 136px;
+  height: 34px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 34px;
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+  color: var(--primary);
+  &:hover {
+    text-decoration-line: underline;
+  }
+  @include mixin.xs {
+    font-size: 12px;
+    width: 71px;
+    height: 17px;
+    line-height: 17px;
+  }
+}
+
+.active {
+  text-decoration: underline;
+  color: red;
+}
