@@ -34,6 +34,13 @@ function Header() {
           >
             <li className={`${style.link}`}>Connexion</li>
           </Link>
+
+          <Link
+            to="/admin"
+            className={location.pathname === '/admin' ? `${style.active}` : ''}
+          >
+            <li className={`${style.link}`}>Admin</li>
+          </Link>
         </ul>
       </nav>
     </header>

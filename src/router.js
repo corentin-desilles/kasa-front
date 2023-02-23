@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
+import Admin from './pages/Admin/Admin';
 
 import HomePage from './pages/HomePage/HomePage';
 const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'));
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             element: <Login />,
           },
         ],
+      },
+      {
+        path: '/admin',
+        element: <Admin />,
       },
       {
         path: '*',
