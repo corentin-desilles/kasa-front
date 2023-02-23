@@ -2,10 +2,9 @@
   padding: 7px 15px;
   border-radius: 20px;
   font-size: 18px;
-  font-family: "Montserrat";
+  font-family: 'Montserrat';
   font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .btn-primary {
@@ -18,9 +17,10 @@
   border: 2px solid var(--primary);
   color: var(--primary);
   background-color: white;
+  transition: 0.3s all;
   &:hover {
-    background-color: var(--primary);
     color: white;
+    background-color: var(--primary);
     border: 2px solid var(--primary);
   }
 }
@@ -51,4 +51,13 @@ input {
   color: var(--red-1);
   font-weight: 500;
   font-size: 12px;
+}
+
+.selected {
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+}
+
+li {
+  cursor: pointer;
 }
