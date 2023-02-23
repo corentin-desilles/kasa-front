@@ -15,10 +15,10 @@ function Collapse({ text, title }) {
         <h2>{title}</h2>
         <span>
           {selected === true ? (
-            <i className={`fa-solid fa-angle-down fa-2xl ${style.arrow}`}></i>
+            <i className={`fa-solid fa-angle-up fa-2xl ${style.arrow}`}></i>
           ) : (
             <i
-              className={`fa-solid fa-angle-down fa-2xl ${style.toggleArrow} `}
+              className={`fa-solid fa-angle-up fa-2xl ${style.toggleArrow} `}
             ></i>
           )}
         </span>
