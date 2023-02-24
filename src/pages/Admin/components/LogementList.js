@@ -4,6 +4,7 @@ import ItemLogement from './ItemLogement';
 import { useContext } from 'react';
 import { ApiContext } from '../../../context/ApiContext';
 import { useFetchData } from '../../../hooks';
+import EditLogement from './EditLogement';
 
 function LogementList() {
   const BASE_URL_API = useContext(ApiContext);
@@ -18,11 +19,15 @@ function LogementList() {
         </div>
       ) : (
         <div className={`${style.listContainer}`}>
-          {logements.map(l => (
-            <div key={l.id}>
-              <ItemLogement logement={l} />
-            </div>
-          ))}
+          {logements.map(l =>
+            l.edit ? (
+              <EditLogement logement={l} />
+            ) : (
+              <div key={l.id}>
+                <ItemLogement logement={l} />
+              </div>
+            )
+          )}
         </div>
       )}
     </>

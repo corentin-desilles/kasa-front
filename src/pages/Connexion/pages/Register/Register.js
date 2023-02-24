@@ -2,11 +2,8 @@ import style from './Register.module.scss';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useLocation } from 'react-router';
 
 function Register() {
-  const location = useLocation();
-
   const defaultValues = {
     userName: '',
     email: '',
@@ -66,33 +63,30 @@ function Register() {
           <input {...register('userName')} type="text" />
           {errors.userName && <p>{errors.userName.message} </p>}
         </div>
+
         <div className={`${style.champContainer}`}>
           <label>Adresse mail</label>
           <input {...register('email')} type="email" />
           {errors.email && <p>{errors.email.message} </p>}
         </div>
+
         <div className={`${style.champContainer}`}>
           <label>Mot de passe</label>
           <input {...register('password')} type="password" />
           {errors.password && <p>{errors.password.message} </p>}
         </div>
-        {location.pathname === '/connexion/register' ? (
-          <div className={`${style.champContainer}`}>
-            <label>Confirmez le mot de passe</label>
-            <input {...register('confirm_password')} type="password" />
-            {errors.confirm_password && (
-              <p>{errors.confirm_password.message} </p>
-            )}
-          </div>
-        ) : (
-          ''
-        )}
+
+        <div className={`${style.champContainer}`}>
+          <label>Confirmez le mot de passe</label>
+          <input {...register('confirm_password')} type="password" />
+          {errors.confirm_password && <p>{errors.confirm_password.message} </p>}
+        </div>
 
         <button
           disabled={isSubmitting}
           className={`btn btn-primary ${style.submitBtn}`}
         >
-          Envoyer
+          Inscription
         </button>
       </form>
     </>
