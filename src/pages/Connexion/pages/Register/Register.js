@@ -3,8 +3,11 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { createUser } from '../../../../apis/users';
+import { useNavigate } from 'react-router';
 
 function Register() {
+  const navigate = useNavigate();
+
   const defaultValues = {
     userName: '',
     email: '',
@@ -48,11 +51,11 @@ function Register() {
     resolver: yupResolver(authSchema),
   });
 
-  const submit = handleSubmit(async credentials => {
-    console.log(credentials);
+  const submit = handleSubmit(async user => {
     try {
       clearErrors();
-      const user = await createUser(credentials);
+      await createUser(user);
+      navigate('/connexion/login');
     } catch (message) {
       setError('generic', { type: 'generic', message });
     }
