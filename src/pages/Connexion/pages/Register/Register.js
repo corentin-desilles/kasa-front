@@ -2,6 +2,7 @@ import style from './Register.module.scss';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { createUser } from '../../../../apis/users';
 
 function Register() {
   const defaultValues = {
@@ -37,19 +38,25 @@ function Register() {
   });
 
   const {
-    formState: { errors, isSubmitting },
-    register,
     handleSubmit,
-    // reset,
-    // clearErrors,
+    register,
+    formState: { errors, isSubmitting },
+    setError,
+    clearErrors,
   } = useForm({
     defaultValues,
     resolver: yupResolver(authSchema),
   });
 
-  async function submit(values) {
-    console.log(values);
-  }
+  const submit = handleSubmit(async credentials => {
+    console.log(credentials);
+    try {
+      clearErrors();
+      const user = await createUser(credentials);
+    } catch (message) {
+      setError('generic', { type: 'generic', message });
+    }
+  });
 
   return (
     <>
