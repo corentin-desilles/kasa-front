@@ -27,19 +27,17 @@ function Header() {
           </Link>
 
           <Link
-            to="/connexion"
-            className={
-              location.pathname === '/connexion' ? `${style.active}` : ''
-            }
+            to="/signup"
+            className={location.pathname === '/signup' ? `${style.active}` : ''}
           >
-            <li className={`${style.link}`}>Connexion</li>
+            <li className={`${style.link}`}>Signup</li>
           </Link>
 
           <Link
-            to="/profil"
-            className={location.pathname === '/profil' ? `${style.active}` : ''}
+            to="/login"
+            className={location.pathname === '/login' ? `${style.active}` : ''}
           >
-            <li className={`${style.link}`}>Profil</li>
+            <li className={`${style.link}`}>Login</li>
           </Link>
         </ul>
       </nav>

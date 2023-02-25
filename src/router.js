@@ -7,11 +7,8 @@ import Profil from './pages/Profil/Profil';
 const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'));
 const ApartmentPage = lazy(() => import('./pages/ApartmentPage/ApartmentPage'));
 const Error = lazy(() => import('./pages/ErrorPage/Error'));
-const Connexion = lazy(() => import('./pages/Connexion/Connexion'));
-const Register = lazy(() =>
-  import('./pages/Connexion/pages/Register/Register')
-);
-const Login = lazy(() => import('./pages/Connexion/pages/Login/Login'));
+const Signup = lazy(() => import('./pages/Signup/Signup'));
+const Login = lazy(() => import('./pages/Login/Login'));
 
 export const router = createBrowserRouter([
   {
@@ -31,20 +28,16 @@ export const router = createBrowserRouter([
         path: '/apart/:apartId',
         element: <ApartmentPage />,
       },
+
       {
-        path: '/connexion',
-        element: <Connexion />,
-        children: [
-          {
-            path: '/connexion/register',
-            element: <Register />,
-          },
-          {
-            path: '/connexion/login',
-            element: <Login />,
-          },
-        ],
+        path: '/signup',
+        element: <Signup />,
       },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+
       {
         path: '/profil',
         element: <Profil />,

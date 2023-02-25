@@ -1,14 +1,26 @@
-import style from './Login.module.scss';
+import style from './Signup.module.scss';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AuthContext } from '../../../../context/AuthContext';
-import { useContext } from 'react';
+import { createUser } from '../../apis/users';
+import { useNavigate } from 'react-router';
 
-function Login() {
-  const { login } = useContext(AuthContext);
+function Signup() {
+  const navigate = useNavigate();
+
+  const defaultValues = {
+    userName: '',
+    email: '',
+    password: '',
+    confirm_password: '',
+  };
 
   const authSchema = yup.object({
+    userName: yup
+      .string()
+      .required("Un nom d'utilisateur doit être renseigné")
+      .min(8, "Nom d'utilisateur trop court")
+      .max(20, "Nom d'utilisateur trop long"),
     email: yup.string().required('Un email doit être renseigné'),
     password: yup
       .string()
@@ -18,12 +30,15 @@ function Login() {
       .matches(/[a-z]/, 'Password requires a lowercase letter')
       .matches(/[A-Z]/, 'Password requires an uppercase letter')
       .matches(/[^\w]/, 'Password requires a symbol'),
-  });
 
-  const defaultValues = {
-    email: '',
-    password: '',
-  };
+    confirm_password: yup
+      .string()
+      .required('Veuillez confirmer votre mot de passe')
+      .oneOf(
+        [yup.ref('password'), null],
+        'Les mots de passe doivent être identiques'
+      ),
+  });
 
   const {
     handleSubmit,
@@ -36,11 +51,11 @@ function Login() {
     resolver: yupResolver(authSchema),
   });
 
-  const submit = handleSubmit(async credentials => {
-    console.log(credentials);
+  const submit = handleSubmit(async user => {
     try {
       clearErrors();
-      await login(credentials);
+      await createUser(user);
+      navigate('/connexion/login');
     } catch (message) {
       setError('generic', { type: 'generic', message });
     }
@@ -48,8 +63,17 @@ function Login() {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={submit} className={`${style.formContainer}`}>
+      <h1>Register</h1>
+      <form
+        onSubmit={handleSubmit(submit)}
+        className={`${style.formContainer}`}
+      >
+        <div className={`${style.champContainer}`}>
+          <label>Nom d'utilisateur</label>
+          <input {...register('userName')} type="text" />
+          {errors.userName && <p>{errors.userName.message} </p>}
+        </div>
+
         <div className={`${style.champContainer}`}>
           <label>Adresse mail</label>
           <input {...register('email')} type="email" />
@@ -62,15 +86,21 @@ function Login() {
           {errors.password && <p>{errors.password.message} </p>}
         </div>
 
+        <div className={`${style.champContainer}`}>
+          <label>Confirmez le mot de passe</label>
+          <input {...register('confirm_password')} type="password" />
+          {errors.confirm_password && <p>{errors.confirm_password.message} </p>}
+        </div>
+
         <button
           disabled={isSubmitting}
           className={`btn btn-primary ${style.submitBtn}`}
         >
-          Connexion
+          Inscription
         </button>
       </form>
     </>
   );
 }
 
-export default Login;
+export default Signup;
