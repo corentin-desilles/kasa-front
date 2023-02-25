@@ -4,9 +4,10 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
+import { Navigate } from 'react-router';
 
 function Login() {
-  const { login } = useContext(AuthContext);
+  const { login, user } = useContext(AuthContext);
 
   const authSchema = yup.object({
     email: yup.string().required('Un email doit être renseigné'),
@@ -48,27 +49,33 @@ function Login() {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={submit} className={`${style.formContainer}`}>
-        <div className={`${style.champContainer}`}>
-          <label>Adresse mail</label>
-          <input {...register('email')} type="email" />
-          {errors.email && <p>{errors.email.message} </p>}
-        </div>
+      {user ? (
+        <Navigate to="/profil" />
+      ) : (
+        <>
+          <h1>Login</h1>
+          <form onSubmit={submit} className={`${style.formContainer}`}>
+            <div className={`${style.champContainer}`}>
+              <label>Adresse mail</label>
+              <input {...register('email')} type="email" />
+              {errors.email && <p>{errors.email.message} </p>}
+            </div>
 
-        <div className={`${style.champContainer}`}>
-          <label>Mot de passe</label>
-          <input {...register('password')} type="password" />
-          {errors.password && <p>{errors.password.message} </p>}
-        </div>
+            <div className={`${style.champContainer}`}>
+              <label>Mot de passe</label>
+              <input {...register('password')} type="password" />
+              {errors.password && <p>{errors.password.message} </p>}
+            </div>
 
-        <button
-          disabled={isSubmitting}
-          className={`btn btn-primary ${style.submitBtn}`}
-        >
-          Connexion
-        </button>
-      </form>
+            <button
+              disabled={isSubmitting}
+              className={`btn btn-primary ${style.submitBtn}`}
+            >
+              Connexion
+            </button>
+          </form>
+        </>
+      )}
     </>
   );
 }

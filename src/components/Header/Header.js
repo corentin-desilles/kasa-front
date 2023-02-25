@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../assets/images/LOGO.png';
+import { AuthContext } from '../../context';
 import style from './Header.module.scss';
 
 function Header() {
+  const { user } = useContext(AuthContext);
   const location = useLocation();
 
   return (
@@ -26,19 +29,47 @@ function Header() {
             <li className={`${style.link}`}>A Propos</li>
           </Link>
 
-          <Link
-            to="/signup"
-            className={location.pathname === '/signup' ? `${style.active}` : ''}
-          >
-            <li className={`${style.link}`}>Signup</li>
-          </Link>
+          {user ? (
+            <>
+              <Link
+                to="/profil"
+                className={
+                  location.pathname === '/profil' ? `${style.active}` : ''
+                }
+              >
+                <li className={`${style.link}`}>Profil</li>
+              </Link>
 
-          <Link
-            to="/login"
-            className={location.pathname === '/login' ? `${style.active}` : ''}
-          >
-            <li className={`${style.link}`}>Login</li>
-          </Link>
+              <Link
+                to="/login"
+                className={
+                  location.pathname === '/login' ? `${style.active}` : ''
+                }
+              >
+                <li className={`${style.link}`}>Logout</li>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/signup"
+                className={
+                  location.pathname === '/signup' ? `${style.active}` : ''
+                }
+              >
+                <li className={`${style.link}`}>Signup</li>
+              </Link>
+
+              <Link
+                to="/login"
+                className={
+                  location.pathname === '/login' ? `${style.active}` : ''
+                }
+              >
+                <li className={`${style.link}`}>Login</li>
+              </Link>
+            </>
+          )}
         </ul>
       </nav>
     </header>
