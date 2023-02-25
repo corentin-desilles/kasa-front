@@ -2,12 +2,11 @@ import style from './Login.module.scss';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthContext } from '../../../../context/AuthContext';
+import { useContext } from 'react';
 
 function Login() {
-  const defaultValues = {
-    email: '',
-    password: '',
-  };
+  const { login } = useContext(AuthContext);
 
   const authSchema = yup.object({
     email: yup.string().required('Un email doit être renseigné'),
@@ -20,6 +19,11 @@ function Login() {
       .matches(/[A-Z]/, 'Password requires an uppercase letter')
       .matches(/[^\w]/, 'Password requires a symbol'),
   });
+
+  const defaultValues = {
+    email: '',
+    password: '',
+  };
 
   const {
     handleSubmit,
@@ -36,7 +40,7 @@ function Login() {
     console.log(credentials);
     try {
       clearErrors();
-      //
+      await login(credentials);
     } catch (message) {
       setError('generic', { type: 'generic', message });
     }
@@ -45,10 +49,7 @@ function Login() {
   return (
     <>
       <h1>Login</h1>
-      <form
-        onSubmit={handleSubmit(submit)}
-        className={`${style.formContainer}`}
-      >
+      <form onSubmit={submit} className={`${style.formContainer}`}>
         <div className={`${style.champContainer}`}>
           <label>Adresse mail</label>
           <input {...register('email')} type="email" />
