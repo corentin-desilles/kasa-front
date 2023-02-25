@@ -36,10 +36,10 @@ function Header() {
           </Link>
 
           <Link
-            to="/admin"
-            className={location.pathname === '/admin' ? `${style.active}` : ''}
+            to="/profil"
+            className={location.pathname === '/profil' ? `${style.active}` : ''}
           >
-            <li className={`${style.link}`}>Admin</li>
+            <li className={`${style.link}`}>Profil</li>
           </Link>
         </ul>
       </nav>

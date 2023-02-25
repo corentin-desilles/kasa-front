@@ -1,5 +1,7 @@
+const API_AUTH = '/api/auth';
+
 export async function signin(credentials) {
-  const response = await fetch('/api/auth', {
+  const response = await fetch(API_AUTH, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -16,4 +18,15 @@ export async function signin(credentials) {
       throw new Error('Error api AuthentificateUser');
     }
   }
+}
+
+export async function getCurrentUser() {
+  const response = await fetch(`${API_AUTH}/current`);
+  return response.json();
+}
+
+export async function signout() {
+  await fetch(API_AUTH, {
+    method: 'DELETE',
+  });
 }

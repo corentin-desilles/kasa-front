@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
-import Admin from './pages/Admin/Admin';
-
+import { rootLoader } from './loaders/rootLoader';
 import HomePage from './pages/HomePage/HomePage';
+import Profil from './pages/Profil/Profil';
 const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'));
 const ApartmentPage = lazy(() => import('./pages/ApartmentPage/ApartmentPage'));
 const Error = lazy(() => import('./pages/ErrorPage/Error'));
@@ -17,6 +17,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    loader: rootLoader,
     children: [
       {
         index: true,
@@ -45,8 +46,8 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: '/admin',
-        element: <Admin />,
+        path: '/profil',
+        element: <Profil />,
       },
       {
         path: '*',
