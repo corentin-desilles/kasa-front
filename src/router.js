@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import App from './App';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { rootLoader } from './loaders/rootLoader';
 import HomePage from './pages/HomePage/HomePage';
 import Profil from './pages/Profil/Profil';
@@ -40,7 +41,11 @@ export const router = createBrowserRouter([
 
       {
         path: '/profil',
-        element: <Profil />,
+        element: (
+          <ProtectedRoute>
+            <Profil />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '*',
