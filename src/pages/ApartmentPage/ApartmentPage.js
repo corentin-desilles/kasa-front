@@ -6,7 +6,7 @@ import Host from './components/Host/Host';
 // import Error from '../ErrorPage/Error';
 // import Description from './components/Description/Description';
 import { ApiContext } from '../../context/ApiContext';
-import { useFetchData } from '../../hooks';
+import { useFetchLogements } from '../../hooks';
 import { Navigate, useParams } from 'react-router';
 import { useContext, useState } from 'react';
 import style from './ApartmentPage.module.scss';
@@ -17,7 +17,7 @@ import Collapse from '../../components/Collapse/Collapse';
 
 function ApartmentPage() {
   const BASE_URL_API = useContext(ApiContext);
-  const [logements, isLoading] = useFetchData(BASE_URL_API);
+  const [logements, isLoading] = useFetchLogements(BASE_URL_API);
   const { apartId } = useParams();
 
   const [selected, setSelected] = useState(null);

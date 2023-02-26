@@ -4,13 +4,13 @@ import style from './HomePage.module.scss';
 import { useContext, useState } from 'react';
 import Loading from '../../components/Loading/Loading';
 import { ApiContext } from '../../context/ApiContext';
-import { useFetchData } from '../../hooks';
+import { useFetchLogements } from '../../hooks';
 import bannerImage from '../../assets/images/banniereAccueil.png';
 
 function HomePage() {
   const [page, setPage] = useState(1);
   const BASE_URL_API = useContext(ApiContext);
-  const [logements, isLoading] = useFetchData(BASE_URL_API, page);
+  const [logements, isLoading] = useFetchLogements(BASE_URL_API, page);
 
   return (
     <>
