@@ -17,7 +17,11 @@ function LogementsListe() {
       ) : (
         <div className={`${style.list}`}>
           {logements.map(l => (
-            <div className={`${style.item}`}>{l.title}</div>
+            <div className={`${style.item}`}>
+              <span className="flex-fill">{l.title}</span>
+              <button className="btn btn-primary mr-15">Editer</button>
+              <button className="btn btn-danger">Supprimer</button>
+            </div>
           ))}
         </div>
       )}

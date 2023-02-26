@@ -1,0 +1,11 @@
+.list {
+  background-color: var(--gray-2);
+  padding: 20px;
+  border-radius: 10px;
+  .item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0px;
+    border-bottom: var(--border-medium);
+  }
+}
