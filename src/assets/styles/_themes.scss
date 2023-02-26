@@ -1,3 +1,5 @@
+@use './mixins' as mixin;
+
 .btn {
   padding: 7px 15px;
   border-radius: 20px;
@@ -60,4 +62,33 @@ input {
 
 li {
   cursor: pointer;
+}
+
+.style-link {
+  cursor: pointer;
+  width: 136px;
+  height: 34px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 34px;
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+  color: var(--primary);
+  &:hover {
+    text-decoration-line: underline;
+  }
+  @include mixin.xs {
+    font-size: 12px;
+    width: 71px;
+    height: 17px;
+    line-height: 17px;
+  }
+}
+
+.active {
+  text-decoration: underline;
+  color: red;
 }
