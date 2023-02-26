@@ -5,7 +5,7 @@ import { AuthContext } from '../../context';
 import style from './Header.module.scss';
 
 function Header() {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const location = useLocation();
 
   return (
@@ -40,14 +40,9 @@ function Header() {
                 <li className={`${style.link}`}>Profil</li>
               </Link>
 
-              <Link
-                to="/login"
-                className={
-                  location.pathname === '/login' ? `${style.active}` : ''
-                }
-              >
-                <li className={`${style.link}`}>Logout</li>
-              </Link>
+              <li onClick={() => logout()} className={`${style.link}`}>
+                Logout
+              </li>
             </>
           ) : (
             <>
