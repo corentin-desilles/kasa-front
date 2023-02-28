@@ -1,5 +1,7 @@
+import LogementForm from '../../components/LogementForm/LogementForm';
+
 function AddLogement() {
-  return <h3>Addlogement</h3>;
+  return <LogementForm />;
 }
 
 export default AddLogement;
