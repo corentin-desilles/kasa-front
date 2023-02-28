@@ -44,7 +44,8 @@ function ApartmentPage() {
     });
   }
 
-  let targetedLogement = logements.find(logement => logement.id === apartId);
+  let targetedLogement = logements.find(logement => logement._id === apartId);
+  console.log(apartId);
 
   return (
     <>
@@ -54,7 +55,7 @@ function ApartmentPage() {
         </div>
       ) : targetedLogement ? (
         <div
-          key={targetedLogement.id}
+          key={targetedLogement._id}
           className={`${style.container}`}
           handleScrollTop={scrollTop()}
         >
@@ -97,7 +98,7 @@ function ApartmentPage() {
             <div className={`${style.accordion} ${style.animate3}`}>
               <Collapse
                 key={Math.random()}
-                text={targetedLogement.equipments}
+                text={targetedLogement.equipment}
                 title={'Equipements'}
                 toggle={toggleE}
                 selected={selected}

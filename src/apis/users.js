@@ -15,7 +15,7 @@ export async function createUser(newUser) {
     if (body) {
       throw body;
     } else {
-      throw new Error('Error api createUser');
+      throw new Error('Error api createLogement');
     }
   }
 }

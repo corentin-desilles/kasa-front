@@ -14,7 +14,7 @@ function Collapse({ text, title }) {
       <div className={`${style.title}`} onClick={handleClickDisplayText}>
         <h2>{title}</h2>
         <span>
-          {selected === true ? (
+          {selected ? (
             <i className={`fa-solid fa-angle-up fa-2xl ${style.arrow}`}></i>
           ) : (
             <i
@@ -27,21 +27,17 @@ function Collapse({ text, title }) {
       {bienUnTableau ? (
         <div
           className={
-            selected === true
-              ? `${style.content} ${style.show}`
-              : `${style.content}`
+            selected ? `${style.content} ${style.show}` : `${style.content}`
           }
         >
-          {text.map(equipement => (
-            <div key={equipement}>{equipement}</div>
+          {text.map(equipment => (
+            <div key={equipment}>{equipment}</div>
           ))}
         </div>
       ) : (
         <div
           className={
-            selected === true
-              ? `${style.content} ${style.show}`
-              : `${style.content}`
+            selected ? `${style.content} ${style.show}` : `${style.content}`
           }
         >
           {text}

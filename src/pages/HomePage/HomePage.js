@@ -33,7 +33,7 @@ function HomePage() {
               {logements.map(l => (
                 <div
                   className={`${style.animate} ${style.animateTime3}`}
-                  key={l.id}
+                  key={l._id}
                 >
                   <ApartmentCard logement={l} />
                 </div>
