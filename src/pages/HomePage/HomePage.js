@@ -10,6 +10,13 @@ function HomePage() {
   const [page, setPage] = useState(1);
   const [logements, isLoading] = useFetchLogements();
 
+  const [filter, setFilter] = useState('');
+
+  function handleInput(e) {
+    const filter = e.target.value;
+    setFilter(filter.trim().toLowerCase());
+  }
+
   return (
     <>
       <div
@@ -19,7 +26,7 @@ function HomePage() {
       </div>
 
       <section
-        className={`${style.apartmentsLayout} ${style.animate} ${style.animateTime2}`}
+        className={`${style.apartmentsLayout} ${style.animate} ${style.animateTime2} br`}
       >
         {isLoading && !logements.length ? (
           <div>
@@ -27,15 +34,29 @@ function HomePage() {
           </div>
         ) : (
           <>
+            <div
+              className={`d-flex flex-row justify-content-center align-items-center ${style.searchBarContainer}`}
+            >
+              <i className="fa-solid fa-magnifying-glass mr-5"></i>
+              <input
+                onInput={handleInput}
+                type="text"
+                placeholder="Localisation"
+                className="flex-fill"
+              />
+            </div>
+
             <div className={` ${style.grid}`}>
-              {logements.map(l => (
-                <div
-                  className={`${style.animate} ${style.animateTime3}`}
-                  key={l._id}
-                >
-                  <ApartmentCard logement={l} />
-                </div>
-              ))}
+              {logements
+                .filter(l => l.location.toLowerCase().startsWith(filter))
+                .map(l => (
+                  <div
+                    className={`${style.animate} ${style.animateTime3}`}
+                    key={l._id}
+                  >
+                    <ApartmentCard logement={l} />
+                  </div>
+                ))}
             </div>
             <div
               className={` ${style.animate}  d-flex flex-row justify-content-center align-items-center mb-2`}

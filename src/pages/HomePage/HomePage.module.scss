@@ -31,6 +31,14 @@
   // align-items: center;
 }
 
+.searchBarContainer {
+  width: 80%;
+  margin-bottom: 40px;
+  input {
+    outline: 0;
+  }
+}
+
 .grid {
   display: grid;
   place-content: center;
