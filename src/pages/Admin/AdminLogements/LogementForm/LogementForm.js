@@ -2,21 +2,26 @@ import style from './LogementForm.module.scss';
 import * as yup from 'yup';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addLogement } from '../../../../apis';
+import { addLogement, updateLogement } from '../../../../apis';
+import { useLoaderData, useNavigate } from 'react-router';
 
 function LogementForm() {
+  const targetedLogement = useLoaderData();
+  const navigate = useNavigate();
+
   const defaultValues = {
-    title: '',
-    cover: '',
-    location: '',
-    tags: [''],
-    pictures: [''],
-    description: '',
-    equipment: [''],
+    title: targetedLogement ? targetedLogement.title : '',
+    cover: targetedLogement ? targetedLogement.cover : '',
+    location: targetedLogement ? targetedLogement.location : '',
+    tags: targetedLogement ? targetedLogement.tags : [''],
+    pictures: targetedLogement ? targetedLogement.pictures : [''],
+    description: targetedLogement ? targetedLogement.description : '',
+    equipment: targetedLogement ? targetedLogement.equipment : [''],
     host: {
-      name: '',
-      picture: '',
+      name: targetedLogement ? targetedLogement.host.name : '',
+      picture: targetedLogement ? targetedLogement.host.picture : '',
     },
+    rating: '',
   };
 
   const logementSchema = yup.object({
@@ -33,6 +38,7 @@ function LogementForm() {
     register,
     control,
     handleSubmit,
+    reset,
     clearErrors,
     setError,
   } = useForm({
@@ -65,15 +71,24 @@ function LogementForm() {
     name: 'equipment',
   });
 
-  const submit = handleSubmit(async logement => {
-    console.log(logement);
+  async function submit(values) {
+    console.log(values);
     try {
       clearErrors();
-      await addLogement(logement);
-    } catch (message) {
-      setError('generic', { type: 'generic', message });
+      if (targetedLogement) {
+        await updateLogement({
+          ...values,
+          _id: targetedLogement._id,
+        });
+        navigate('/admin/logements/liste');
+      } else {
+        await addLogement(values);
+        reset(defaultValues);
+      }
+    } catch (e) {
+      setError('generic', { type: 'generic', message: 'Il y a eu une erreur' });
     }
-  });
+  }
 
   return (
     <form
@@ -157,10 +172,6 @@ function LogementForm() {
         </button>
       </div>
 
-      {/* <div className="d-flex flex-column mb-20">
-        <label>Photos du logement</label>
-        <input {...register('image')} type="text" />
-      </div> */}
       <div className="d-flex flex-column mb-20">
         <label>Description</label>
         <input {...register('description')} type="text" />
