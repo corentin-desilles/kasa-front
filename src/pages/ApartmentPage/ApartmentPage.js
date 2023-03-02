@@ -49,7 +49,7 @@ function ApartmentPage() {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && !logements.length ? (
         <div>
           <Loading />
         </div>

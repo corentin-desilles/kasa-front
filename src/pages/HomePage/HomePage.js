@@ -1,16 +1,14 @@
 import Banner from '../../components/Banner/Banner';
 import ApartmentCard from './components/ApartmentCard/ApartmentCard';
 import style from './HomePage.module.scss';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Loading from '../../components/Loading/Loading';
-import { ApiContext } from '../../context/ApiContext';
 import { useFetchLogements } from '../../hooks';
 import bannerImage from '../../assets/images/banniereAccueil.png';
 
 function HomePage() {
   const [page, setPage] = useState(1);
-  const BASE_URL_API = useContext(ApiContext);
-  const [logements, isLoading] = useFetchLogements(BASE_URL_API, page);
+  const [logements, isLoading] = useFetchLogements();
 
   return (
     <>

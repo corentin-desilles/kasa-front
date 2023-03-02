@@ -4,14 +4,11 @@ import './assets/styles/index.scss';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router';
 import { router } from './router';
-import { ApiContext } from './context/ApiContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ApiContext.Provider value="http://localhost:3000/">
-      <RouterProvider router={router}></RouterProvider>
-    </ApiContext.Provider>
+    <RouterProvider router={router}></RouterProvider>
   </React.StrictMode>
 );
 
