@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getLogements } from '../apis';
 
-export function useFetchLogements(url, page) {
+export function useFetchLogements() {
   const [logements, setLogements] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState([]);
@@ -11,13 +11,7 @@ export function useFetchLogements(url, page) {
     async function fetchData() {
       try {
         setIsLoading(true);
-
-        const queryParam = new URLSearchParams();
-        if (page) {
-          queryParam.append('limit', 9);
-          queryParam.append('skip', (page - 1) * 9);
-        }
-        const fetchedLogements = await getLogements(queryParam);
+        const fetchedLogements = await getLogements();
         setLogements(fetchedLogements);
       } catch (e) {
         console.log('Erreur');
@@ -30,7 +24,7 @@ export function useFetchLogements(url, page) {
     }
     fetchData();
     return () => (cancel = true);
-  }, [url, page]);
+  }, []);
 
-  return [logements, isLoading, error];
+  return [logements, setLogements, isLoading, error];
 }
