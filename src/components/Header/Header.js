@@ -3,10 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from 'assets/images/LOGO.png';
 import { AuthContext } from 'context';
 import './Header.module.scss';
+import { useSetRecoilState } from 'recoil';
+import { wishlistDisplayState } from 'state';
 
 function Header() {
   const { user, logout } = useContext(AuthContext);
   const location = useLocation();
+  const setWishlistDisplay = useSetRecoilState(wishlistDisplayState);
 
   return (
     <header>
@@ -35,7 +38,15 @@ function Header() {
                 <li className="style-link">Profil</li>
               </Link>
 
-              <li onClick={() => logout()} className="style-link" s>
+              <button
+                onClick={() => setWishlistDisplay(true)}
+                className="btn btn-reverse-primary ml-20"
+              >
+                <i className="fa-solid fa-heart mr-5"></i>
+                <span>WishList</span>
+              </button>
+
+              <li onClick={() => logout()} className="style-link">
                 Logout
               </li>
             </>

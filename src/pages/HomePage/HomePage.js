@@ -6,7 +6,8 @@ import Loading from 'components/Loading/Loading';
 import { useFetchLogements } from 'hooks';
 import bannerImage from 'assets/images/banniereAccueil.png';
 import { useRecoilValue } from 'recoil';
-import { selectFilteredLogements } from 'state';
+import { selectFilteredLogements, wishlistDisplayState } from 'state';
+import Wishlist from './components/Wishlist/Wishlist';
 
 function HomePage() {
   const [filter, setFilter] = useState('');
@@ -14,6 +15,7 @@ function HomePage() {
   const [page, setPage] = useState(1);
   const [isLoading] = useFetchLogements();
   const logements = useRecoilValue(selectFilteredLogements(filter));
+  const showWishlist = useRecoilValue(wishlistDisplayState);
 
   function handleInput(e) {
     const filter = e.target.value;
@@ -74,6 +76,7 @@ function HomePage() {
           </>
         )}
       </section>
+      {showWishlist && <Wishlist />}
     </>
   );
 }

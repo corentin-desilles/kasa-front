@@ -1,0 +1,22 @@
+.wishlistContainer {
+  position: fixed;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+.wishlist {
+  width: 400px;
+  height: 400px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  border: var(--border-light);
+}
