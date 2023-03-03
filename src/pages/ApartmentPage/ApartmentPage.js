@@ -3,15 +3,11 @@ import NameTag from './components/NameTag/NameTag';
 import Title from './components/Title/Title';
 import Rate from './components/Rate/Rate';
 import Host from './components/Host/Host';
-// import Error from '../ErrorPage/Error';
-// import Description from './components/Description/Description';
 import { ApiContext } from '../../context/ApiContext';
 import { useFetchLogements } from '../../hooks';
 import { Navigate, useParams } from 'react-router';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import style from './ApartmentPage.module.scss';
-// import Description from './components/Description/Description';
-// import Equipements from './components/Equipements/Equipements';
 import Loading from '../../components/Loading/Loading';
 import Collapse from '../../components/Collapse/Collapse';
 
@@ -19,23 +15,6 @@ function ApartmentPage() {
   const BASE_URL_API = useContext(ApiContext);
   const [logements, isLoading] = useFetchLogements(BASE_URL_API);
   const { apartId } = useParams();
-
-  const [selected, setSelected] = useState(null);
-
-  const toggleD = i => {
-    //ferme les autres elem si j'en ouvre un autre
-    if (selected === i) {
-      return setSelected(null);
-    }
-    setSelected(i);
-  };
-  const toggleE = i => {
-    //ferme les autres elem si j'en ouvre un autre
-    if (selected === i) {
-      return setSelected(null);
-    }
-    setSelected(i);
-  };
 
   function scrollTop() {
     window.scrollTo({
@@ -91,8 +70,6 @@ function ApartmentPage() {
                 key={targetedLogement.description}
                 text={targetedLogement.description}
                 title={'Description'}
-                toggle={toggleD}
-                selected={selected}
               />
             </div>
             <div className={`${style.accordion} ${style.animate3}`}>
@@ -100,8 +77,6 @@ function ApartmentPage() {
                 key={Math.random()}
                 text={targetedLogement.equipment}
                 title={'Equipements'}
-                toggle={toggleE}
-                selected={selected}
               />
             </div>
           </div>
