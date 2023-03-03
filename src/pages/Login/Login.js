@@ -2,7 +2,7 @@ import style from './Login.module.scss';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from 'context/AuthContext';
 import { useContext } from 'react';
 import { Navigate } from 'react-router';
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getLogements } from '../apis';
+import { getLogements } from 'apis';
 
 export function useFetchLogements() {
   const [logements, setLogements] = useState([]);

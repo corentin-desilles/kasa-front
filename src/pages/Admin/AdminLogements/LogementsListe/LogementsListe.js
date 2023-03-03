@@ -1,13 +1,10 @@
-// import { useContext } from 'react';
-import { useFetchLogements } from '../../../../hooks';
-import Loading from '../../../../components/Loading/Loading';
-// import { ApiContext } from '../../../../context/ApiContext';
+import { useFetchLogements } from 'hooks';
+import Loading from 'components/Loading/Loading';
 import style from './LogementsListe.module.scss';
-import { deleteLogement as deleteL } from '../../../../apis';
+import { deleteLogement as deleteL } from 'apis';
 import { NavLink } from 'react-router-dom';
 
 function LogementsListe() {
-  // const BASE_URL_API = useContext(ApiContext);
   const [logements, setLogements, isLoading] = useFetchLogements();
 
   async function deleteLogement(_id) {
@@ -15,10 +12,6 @@ function LogementsListe() {
     await deleteL(_id);
     setLogements(logements.filter(l => l._id !== _id));
   }
-
-  // async function updateLogement(_id) {
-  //   redirect(`/admin/logements/edit/${_id}`);
-  // }
 
   return (
     <div>

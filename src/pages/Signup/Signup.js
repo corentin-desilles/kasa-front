@@ -2,7 +2,7 @@ import style from './Signup.module.scss';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { createUser } from '../../apis/users';
+import { createUser } from 'apis/users';
 import { useNavigate } from 'react-router';
 
 function Signup() {

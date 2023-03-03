@@ -2,7 +2,7 @@ import style from './LogementForm.module.scss';
 import * as yup from 'yup';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { addLogement, updateLogement } from '../../../../apis';
+import { addLogement, updateLogement } from 'apis';
 import { useLoaderData, useNavigate } from 'react-router';
 
 function LogementForm() {

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { AuthContext } from '../../context';
+import { AuthContext } from 'context';
 import style from './Profil.module.scss';
 
 function Profil() {
