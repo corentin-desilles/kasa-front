@@ -6,7 +6,6 @@ import { rootLoader } from './loaders/rootLoader';
 import Admin from './pages/Admin/Admin';
 import HomePage from './pages/HomePage/HomePage';
 import Profil from './pages/Profil/Profil';
-import { getLogement } from './apis';
 
 const AboutPage = lazy(() => import('./pages/AboutPage/AboutPage'));
 const ApartmentPage = lazy(() => import('./pages/ApartmentPage/ApartmentPage'));
@@ -87,8 +86,6 @@ export const router = createBrowserRouter([
               },
               {
                 path: '/admin/logements/edit/:logementId',
-                loader: async ({ params: { logementId } }) =>
-                  getLogement(logementId),
                 element: <LogementForm />,
               },
             ],

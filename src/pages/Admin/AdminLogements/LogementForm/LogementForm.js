@@ -3,10 +3,14 @@ import * as yup from 'yup';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { addLogement, updateLogement } from 'apis';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
+import { useRecoilValue } from 'recoil';
+import { selectActiveLogement } from 'state';
 
 function LogementForm() {
-  const targetedLogement = useLoaderData();
+  const { logementId } = useParams();
+  const targetedLogement = useRecoilValue(selectActiveLogement(logementId));
+
   const navigate = useNavigate();
 
   const defaultValues = {
