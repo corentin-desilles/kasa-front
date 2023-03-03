@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { getLogements } from 'apis';
+import { useSetRecoilState } from 'recoil';
+import { logementsState } from 'state';
 
 export function useFetchLogements() {
-  const [logements, setLogements] = useState([]);
+  const setLogements = useSetRecoilState(logementsState);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState([]);
 
@@ -24,7 +26,7 @@ export function useFetchLogements() {
     }
     fetchData();
     return () => (cancel = true);
-  }, []);
+  }, [setLogements]);
 
-  return [logements, setLogements, isLoading, error];
+  return [isLoading, error];
 }
