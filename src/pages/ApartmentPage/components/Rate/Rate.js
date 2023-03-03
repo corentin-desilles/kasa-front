@@ -1,8 +1,6 @@
-// import { useState } from "react";
 import style from './Rate.module.scss';
 
 function Rate({ targetedLogement: { rating } }) {
-  // const [Normalstars, setNormalStars] = useState(0);
   const totalStars = 5;
   const activeStars = rating;
 

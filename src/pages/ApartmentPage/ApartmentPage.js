@@ -3,16 +3,13 @@ import NameTag from './components/NameTag/NameTag';
 import Title from './components/Title/Title';
 import Rate from './components/Rate/Rate';
 import Host from './components/Host/Host';
-// import { ApiContext } from '../../context/ApiContext';
 import { useFetchLogements } from 'hooks';
 import { Navigate, useParams } from 'react-router';
-// import { useContext } from 'react';
 import style from './ApartmentPage.module.scss';
 import Loading from 'components/Loading/Loading';
 import Collapse from 'components/Collapse/Collapse';
 
 function ApartmentPage() {
-  // const BASE_URL_API = useContext(ApiContext);
   const [logements, isLoading] = useFetchLogements();
   const { apartId } = useParams();
 

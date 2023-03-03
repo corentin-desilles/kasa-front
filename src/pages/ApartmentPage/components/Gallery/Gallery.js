@@ -1,7 +1,3 @@
-// import { useState } from 'react';
-// import Picture from './components/Picture';
-// import style from './Pictures.module.scss';
-// import { data } from '../../../../data/logements';
 import style from './Gallery.module.scss';
 import { useState } from 'react';
 
