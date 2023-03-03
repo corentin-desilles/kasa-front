@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import AdminLogementNav from './components/AdminLogementNav/AdminLogementNav';
 
 function AdminLogements() {
+  const { key } = useLocation();
   return (
     <div className="d-flex flex-column">
       <h4 className="mb-20">Gestion des logements</h4>
@@ -10,7 +11,7 @@ function AdminLogements() {
         <AdminLogementNav />
         <div className="flex-fill d-flex flex-column">
           <Suspense>
-            <Outlet />
+            <Outlet key={key} />
           </Suspense>
         </div>
       </div>
