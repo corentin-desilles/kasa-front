@@ -1,5 +1,5 @@
 import { getLogement } from 'apis';
-import { selectorFamily } from 'recoil';
+import { selector, selectorFamily } from 'recoil';
 import { logementsState } from './atoms';
 
 export const selectFilteredLogements = selectorFamily({
@@ -18,4 +18,9 @@ export const selectFilteredLogements = selectorFamily({
 export const selectActiveLogement = selectorFamily({
   key: 'selectActiveLogement',
   get: logementId => async () => logementId && (await getLogement(logementId)),
+});
+
+export const selectWishedLogement = selector({
+  key: 'selectWishedLogement',
+  get: ({ get }) => get(logementsState)?.filter(l => l.liked),
 });

@@ -14,7 +14,9 @@ export function useFetchLogements() {
       try {
         setIsLoading(true);
         const fetchedLogements = await getLogements();
-        setLogements(fetchedLogements);
+        if (!cancel) {
+          setLogements(fetchedLogements);
+        }
       } catch (e) {
         console.log('Erreur');
         setError('erreur');

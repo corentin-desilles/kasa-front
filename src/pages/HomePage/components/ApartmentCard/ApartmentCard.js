@@ -1,16 +1,32 @@
 import style from './ApartmentCard.module.scss';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 function AppartmentCard({ logement: { _id, title, cover } }) {
+  const [liked, setLiked] = useState(false);
+
+  function handleClickLike() {
+    setLiked(!liked);
+  }
   return (
-    <Link to={`/apart/${_id}`}>
+    <>
       <div className={`${style.apartementCard}`}>
-        <div className={`${style.imageContainer}`}>
-          <img src={cover} alt="appartement" />
+        <Link to={`/apart/${_id}`}>
+          <div className={`${style.imageContainer}`}>
+            <img src={cover} alt="appartement" />
+          </div>
+        </Link>
+        <div className={`${style.cardTitleContainer}`}>
+          <p className={`${style.cardTitle}`}>{title}</p>
+          <i
+            onClick={handleClickLike}
+            className={`fa-solid fa-heart ${
+              liked ? style.heartActive : style.heartInactive
+            } `}
+          ></i>
         </div>
-        <p className={`${style.cardTitle}`}>{title}</p>
       </div>
-    </Link>
+    </>
   );
 }
 
