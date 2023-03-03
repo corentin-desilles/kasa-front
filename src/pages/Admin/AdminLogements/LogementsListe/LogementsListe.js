@@ -3,9 +3,12 @@ import Loading from 'components/Loading/Loading';
 import style from './LogementsListe.module.scss';
 import { deleteLogement as deleteL } from 'apis';
 import { NavLink } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { logementsState } from 'state';
 
 function LogementsListe() {
-  const [logements, setLogements, isLoading] = useFetchLogements();
+  const [isLoading] = useFetchLogements();
+  const [logements, setLogements] = useRecoilState(logementsState);
 
   async function deleteLogement(_id) {
     console.log(_id);

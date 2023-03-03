@@ -5,12 +5,15 @@ import { useState } from 'react';
 import Loading from 'components/Loading/Loading';
 import { useFetchLogements } from 'hooks';
 import bannerImage from 'assets/images/banniereAccueil.png';
+import { useRecoilValue } from 'recoil';
+import { selectFilteredLogements } from 'state';
 
 function HomePage() {
-  const [page, setPage] = useState(1);
-  const [logements, isLoading] = useFetchLogements();
-
   const [filter, setFilter] = useState('');
+
+  const [page, setPage] = useState(1);
+  const [isLoading] = useFetchLogements();
+  const logements = useRecoilValue(selectFilteredLogements(filter));
 
   function handleInput(e) {
     const filter = e.target.value;

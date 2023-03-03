@@ -8,9 +8,13 @@ import { Navigate, useParams } from 'react-router';
 import style from './ApartmentPage.module.scss';
 import Loading from 'components/Loading/Loading';
 import Collapse from 'components/Collapse/Collapse';
+import { useRecoilState } from 'recoil';
+import { logementsState } from 'state';
 
 function ApartmentPage() {
-  const [logements, isLoading] = useFetchLogements();
+  const [isLoading] = useFetchLogements();
+  const [logements] = useRecoilState(logementsState);
+
   const { apartId } = useParams();
 
   function scrollTop() {
