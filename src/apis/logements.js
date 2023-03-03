@@ -40,7 +40,7 @@ export async function addLogement(newLogement) {
 }
 
 export async function deleteLogement(_id) {
-  const response = await fetch(LOGEMENT_API, {
+  const response = await fetch(`${LOGEMENT_API}/${_id}`, {
     method: 'DELETE',
   });
   if (response.ok) {
