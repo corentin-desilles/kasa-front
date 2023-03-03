@@ -3,10 +3,10 @@ import { getLogements } from 'apis';
 import { useSetRecoilState } from 'recoil';
 import { logementsState } from 'state';
 
-export function useFetchLogements() {
+export function useFetchLogements(): [boolean, string] {
   const setLogements = useSetRecoilState(logementsState);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     let cancel = false;
@@ -18,7 +18,6 @@ export function useFetchLogements() {
           setLogements(fetchedLogements);
         }
       } catch (e) {
-        console.log('Erreur');
         setError('erreur');
       } finally {
         if (!cancel) {
@@ -27,7 +26,9 @@ export function useFetchLogements() {
       }
     }
     fetchData();
-    return () => (cancel = true);
+    return () => {
+      cancel = true;
+    };
   }, [setLogements]);
 
   return [isLoading, error];

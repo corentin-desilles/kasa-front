@@ -1,3 +1,6 @@
+import { LogementI } from 'interfaces';
+import { ObjectId } from 'types';
+
 const LOGEMENT_API = '/api/logements';
 
 export async function getLogements() {
@@ -10,7 +13,7 @@ export async function getLogements() {
   }
 }
 
-export async function getLogement(_id) {
+export async function getLogement(_id: ObjectId): Promise<LogementI> {
   const response = await fetch(`${LOGEMENT_API}/${_id}`);
   if (response.ok) {
     return response.json();
@@ -19,7 +22,9 @@ export async function getLogement(_id) {
   }
 }
 
-export async function addLogement(newLogement) {
+export async function addLogement(
+  newLogement: Partial<LogementI>
+): Promise<LogementI> {
   const response = await fetch(LOGEMENT_API, {
     method: 'POST',
     headers: {
@@ -39,7 +44,7 @@ export async function addLogement(newLogement) {
   }
 }
 
-export async function deleteLogement(_id) {
+export async function deleteLogement(_id: ObjectId): Promise<ObjectId> {
   const response = await fetch(`${LOGEMENT_API}/${_id}`, {
     method: 'DELETE',
   });
@@ -50,7 +55,9 @@ export async function deleteLogement(_id) {
   }
 }
 
-export async function updateLogement(updatedLogement) {
+export async function updateLogement(
+  updatedLogement: Partial<LogementI>
+): Promise<LogementI> {
   const { _id, ...values } = updatedLogement;
   const response = await fetch(`${LOGEMENT_API}/${_id}`, {
     method: 'PATCH',

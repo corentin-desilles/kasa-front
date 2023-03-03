@@ -1,8 +1,13 @@
 import style from './ApartmentCard.module.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { ObjectId } from 'types';
 
-function AppartmentCard({ logement: { _id, title, cover } }) {
+function AppartmentCard({
+  logement: { _id, title, cover },
+}: {
+  logement: { _id: ObjectId; title: string; cover: string };
+}) {
   const [liked, setLiked] = useState(false);
 
   function handleClickLike() {

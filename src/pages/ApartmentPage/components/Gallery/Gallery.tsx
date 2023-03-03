@@ -1,7 +1,11 @@
 import style from './Gallery.module.scss';
 import { useState } from 'react';
 
-function Gallery({ targetedLogement: { pictures } }) {
+function Gallery({
+  targetedLogement: { pictures },
+}: {
+  targetedLogement: { pictures: [string] };
+}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animate, setAnimate] = useState(false);
 

@@ -1,6 +1,10 @@
-import style from "./Title.module.scss";
+import style from './Title.module.scss';
 
-function Title({ targetedLogement: { title, location } }) {
+function Title({
+  targetedLogement: { title, location },
+}: {
+  targetedLogement: { title: string; location: string };
+}) {
   return (
     <div className={`${style.container}`}>
       <div className={`${style.apartmentPageTitle}`}>{title}</div>

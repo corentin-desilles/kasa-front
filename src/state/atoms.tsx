@@ -1,6 +1,7 @@
-const { atom } = require('recoil');
+import { LogementI } from 'interfaces';
+import { atom } from 'recoil';
 
-export const logementsState = atom({
+export const logementsState = atom<LogementI[]>({
   key: 'logementsState',
   default: [],
 });

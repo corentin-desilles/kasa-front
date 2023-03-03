@@ -5,12 +5,13 @@ import { deleteLogement as deleteL } from 'apis';
 import { NavLink } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { logementsState } from 'state';
+import { ObjectId } from 'types';
 
 function LogementsListe() {
   const [isLoading] = useFetchLogements();
   const [logements, setLogements] = useRecoilState(logementsState);
 
-  async function deleteLogement(_id) {
+  async function deleteLogement(_id: ObjectId) {
     console.log(_id);
     await deleteL(_id);
     setLogements(logements.filter(l => l._id !== _id));

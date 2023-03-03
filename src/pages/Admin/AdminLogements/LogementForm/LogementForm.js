@@ -26,6 +26,7 @@ function LogementForm() {
       picture: targetedLogement ? targetedLogement.host.picture : '',
     },
     rating: '',
+    generic: '',
   };
 
   const logementSchema = yup.object({

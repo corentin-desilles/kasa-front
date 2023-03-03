@@ -1,9 +1,13 @@
-import style from "./Host.module.scss";
+import style from './Host.module.scss';
 
 function Host({
   targetedLogement: {
     host: { name, picture },
   },
+}: {
+  targetedLogement: {
+    host: { name: string; picture: string };
+  };
 }) {
   return (
     <div className={`${style.container}`}>

@@ -1,10 +1,10 @@
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { selectWishedLogement, wishlistDisplayState } from 'state';
+import { useSetRecoilState } from 'recoil';
+import { wishlistDisplayState } from 'state';
 import style from './Wishlist.module.scss';
 
 function Wishlist() {
   const setWishlistDisplay = useSetRecoilState(wishlistDisplayState);
-  const logements = useRecoilValue(selectWishedLogement);
+  // const logements = useRecoilValue(selectWishedLogement);
 
   return (
     <div
@@ -13,7 +13,7 @@ function Wishlist() {
     >
       <div onClick={e => e.stopPropagation()} className={`${style.wishlist}`}>
         <h4 className="mn-20">Wishlist</h4>
-        <ul>
+        {/* <ul>
           {logements.length &&
             logements.map(l => (
               <li key={l._id} className="d-flex align-items-center">
@@ -23,7 +23,7 @@ function Wishlist() {
                 </button>
               </li>
             ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

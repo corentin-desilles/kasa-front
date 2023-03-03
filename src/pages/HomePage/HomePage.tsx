@@ -1,7 +1,7 @@
 import Banner from 'components/Banner/Banner';
 import ApartmentCard from './components/ApartmentCard/ApartmentCard';
 import style from './HomePage.module.scss';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Loading from 'components/Loading/Loading';
 import { useFetchLogements } from 'hooks';
 import bannerImage from 'assets/images/banniereAccueil.png';
@@ -17,7 +17,7 @@ function HomePage() {
   const logements = useRecoilValue(selectFilteredLogements(filter));
   const showWishlist = useRecoilValue(wishlistDisplayState);
 
-  function handleInput(e) {
+  function handleInput(e: ChangeEvent<HTMLInputElement>) {
     const filter = e.target.value;
     setFilter(filter.trim().toLowerCase());
   }
