@@ -31,7 +31,7 @@ function HomePage() {
       </div>
 
       <section
-        className={`${style.apartmentsLayout} ${style.animate} ${style.animateTime2} br`}
+        className={`${style.apartmentsLayout} ${style.animate} ${style.animateTime2}`}
       >
         {isLoading && !logements.length ? (
           <div>

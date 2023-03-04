@@ -1,6 +1,10 @@
+import { NewUserI } from 'interfaces';
+
 const API_USERS = '/api/users';
 
-export async function createUser(newUser) {
+export async function createUser(
+  newUser: Partial<NewUserI>
+): Promise<NewUserI> {
   const response = await fetch(API_USERS, {
     method: 'POST',
     headers: {

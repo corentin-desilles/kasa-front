@@ -1,6 +1,10 @@
 import style from './Rate.module.scss';
 
-function Rate({ targetedLogement: { rating } }) {
+function Rate({
+  targetedLogement: { rating },
+}: {
+  targetedLogement: { rating: number };
+}) {
   const totalStars = 5;
   const activeStars = rating;
 

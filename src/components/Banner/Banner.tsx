@@ -1,6 +1,12 @@
 import style from './Banner.module.scss';
 
-function Banner({ banner, displayBannerText }) {
+function Banner({
+  banner,
+  displayBannerText,
+}: {
+  banner: string;
+  displayBannerText: boolean;
+}) {
   return (
     <section className={`${style.bannerLayout}`}>
       {displayBannerText ? (

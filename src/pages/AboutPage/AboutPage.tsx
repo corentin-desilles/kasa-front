@@ -1,4 +1,4 @@
-import Banner from 'components/Banner/Banner.js';
+import Banner from 'components/Banner/Banner';
 import { about } from 'data/about.js';
 import bannerAbout from 'assets/images/bannerAbout.png';
 import style from './AboutPage.module.scss';
@@ -9,7 +9,7 @@ function AboutPage() {
     <>
       <div className={`${style.aboutPageContainer}`}>
         <div className={`${style.bannerContainer}`}>
-          <Banner banner={bannerAbout} />
+          <Banner banner={bannerAbout} displayBannerText={false} />
         </div>
 
         <div className={`${style.wrapper}`}>

@@ -38,7 +38,6 @@ function Login() {
   });
 
   const submit = handleSubmit(async credentials => {
-    console.log(credentials);
     try {
       clearErrors();
       await login(credentials);

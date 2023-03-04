@@ -1,6 +1,7 @@
+import { AuthI } from 'interfaces';
 const API_AUTH = '/api/auth';
 
-export async function signin(credentials) {
+export async function signin(credentials: AuthI): Promise<AuthI> {
   const response = await fetch(API_AUTH, {
     method: 'POST',
     headers: {

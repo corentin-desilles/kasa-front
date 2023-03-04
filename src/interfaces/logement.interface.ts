@@ -11,7 +11,7 @@ export interface LogementI {
     name: string;
     picture: string;
   };
-  rating: string;
+  rating: number;
   equipment: [string];
   tags: [string];
 }
